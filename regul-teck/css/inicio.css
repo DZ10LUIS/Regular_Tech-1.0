@@ -8,7 +8,12 @@ body {
   font-size:12px;
   background:#022B43 url(/images/classy_fabric.png);
 }
+.corner-image {
+  position: absolute;
+  top: 10;
+  left: 100;
 
+}
 form {
  	background:#025373; 
   width:300px;
