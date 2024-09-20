@@ -288,34 +288,60 @@
 </div>
 
         
-        <button type="button" onclick="submitForm()">Enviar</button>
+        <button type="button" onclick="submitForm()" id="submitBtn">Enviar</button>
     </form>
     <div class="result" id="result"></div>
-
+    <div id="gptResponse"></div>
     <script>
-        function submitForm() {
-  const form = document.getElementById('quizForm');
-  const formData = new FormData(form);
-
-  // Convert FormData to a plain JavaScript object
-  const data = Object.fromEntries(formData.entries());
-
-  // Analyze the data (basic example)
-  const results = {};
-  for (const [key, value] of Object.entries(data)) {
-    if (key.startsWith('q') && value === 'incorrect') {
-      const subject = key.substring(1, 2); // Extract subject (e.g., '1' for Spanish)
-      results[subject] = results[subject] || [];
-      results[subject].push(key);
-    }
-  }
-
-  // Send the analyzed data to ChatGPT
-  sendToChatGPT(results);
-}
-
-// Assuming a button with id="submitBtn" triggers the form submission
-document.getElementById('submitBtn').addEventListener('click', submitForm);
-    </script>
+        async function submitForm() {
+          const form = document.getElementById('quizForm');
+          const formData = new FormData(form);
+    
+          // Convertir FormData en un objeto JS plano
+          const data = Object.fromEntries(formData.entries());
+    
+          // Analizar los datos (ejemplo básico)
+          const results = {};
+          for (const [key, value] of Object.entries(data)) {
+            if (key.startsWith('q') && value === 'incorrect') {
+              const subject = key.substring(1, 2); // Extraer la pregunta (e.g., '1' para q1)
+              results[subject] = results[subject] || [];
+              results[subject].push(key);
+            }
+          }
+    
+          // Preparar el mensaje para enviar a GPT
+          const message = `Analiza los siguientes errores del cuestionario: ${JSON.stringify(results)}`;
+    
+          // Enviar a la API de OpenAI
+          const apiKey = ''
+          try {
+            const response = await fetch('https://api.openai.com/v1/completions', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+              },
+              body: JSON.stringify({
+                model: 'gpt-4o-mini', // Puedes ajustar el modelo según tus necesidades
+                prompt: message,
+                max_tokens: 100
+              })
+            });
+    
+            const result = await response.json();
+    
+            // Mostrar el resultado de GPT en la página
+            document.getElementById('gptResponse').innerText = result.choices[0].text;
+    
+          } catch (error) {
+            console.error('Error al enviar a la API de GPT:', error);
+            document.getElementById('gptResponse').innerText = 'Hubo un error al procesar tu solicitud.';
+          }
+        }
+    
+        // Asociar el evento al botón
+        document.getElementById('submitBtn').addEventListener('click', submitForm);
+      </script>
 </body>
 </html>
