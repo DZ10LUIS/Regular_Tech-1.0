@@ -39,7 +39,11 @@ submit.addEventListener("click", function (event) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage)
+            Swal.fire({
+                icon: "error",
+                title: "Denegado",
+                text: "correo y/o contraseña incorrecta"
+              });
             // ..
         });
 
