@@ -55,3 +55,7 @@ body {
 .chat-input button:hover {
     background-color: #0056b3;
 }
+.hint-t p{
+    font-style: italic;
+    color: gray;
+}
