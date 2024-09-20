@@ -3,6 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/fireba
 
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,22 +21,33 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
+const database = getDatabase(app);
 
 const submit = document.getElementById('btnIniciar');
 submit.addEventListener("click", function (event) {
     event.preventDefault()
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const institucion = document.getElementById('institucion').value;
+    const semestre = document.getElementById('semestre').value;
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            alert("Creating Account...")
-            window.location.href = "chat.html";
-            // ...
+
+            // Guardar los datos del usuario en Realtime Database
+            set(ref(database, 'usuarios/' + user.uid), {
+                email: email,
+                institucion: institucion,
+                semestre: semestre
+            })
+            .then(() => {
+                alert("Cuenta creada y datos guardados exitosamente!");
+                window.location.href = "chat.html";
+            })
+            .catch((error) => {
+                alert("Error al guardar los datos: " + error.message);
+            });
         })
         .catch((error) => {
             const errorCode = error.code;
