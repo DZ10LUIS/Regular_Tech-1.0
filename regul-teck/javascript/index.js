@@ -42,17 +42,31 @@ submit.addEventListener("click", function (event) {
                 semestre: semestre
             })
             .then(() => {
-                alert("Cuenta creada y datos guardados exitosamente!");
+                Swal.fire({
+                    position: "",
+                    icon: "success",
+                    title: "Registro exitoso",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 window.location.href = "chat.html";
             })
             .catch((error) => {
-                alert("Error al guardar los datos: " + error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "ERROR",
+                    text: "Error al guardar los datos: " + error.message
+                  });
             });
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorMessage)
+            Swal.fire({
+                icon: "error",
+                title: "ERROR",
+                text: "Error al guardar los datos: " + error.message
+              });
             // ..
         });
 
