@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login con Firebase</title>
+    <link rel="stylesheet" href="css/inicio.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="javascript/index.js" defer></script>
+</head>
+<body>
+    <h2>Registrar</h2>
+    <form>
+        <div class="inset">
+        <p>
+          <label for="email">Correo Electronico</label>
+          <input type="text" name="email" id="email">
+        </p>
+        <p>
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" id="password">
+        </p>
+        <p>
+          <label for="Escuela">Institución Academica</label>
+          <select id="institucion" name="escuela">
+            <option value="Cbtis No.96">Cbtis 96</option>
+            <option value="Cobaed 27">Cobaed 27</option>
+            <option value="Bachillerato No.109">Bachillerato No.109</option>
+            <option value="Cbtis No.6/5">Cbtis No.6/5</option>
+        </select>
+        </p>
+        <p>
+          <label for="semestre">Semestre</label>
+          <select id="semestre" name="escuela">
+            <option value="Cbtis No.96">Cbtis 96</option>
+            <option value="Cobaed 27">Cobaed 27</option>
+            <option value="Bachillerato No.109">Bachillerato No.109</option>
+            <option value="Cbtis No.6/5">Cbtis No.6/5</option>
+        </select>
+        </p>
+        </div>
+        <p class="p-container">
+          <span>¿Deseas registrarte?</span> <a href="chat.html">
+          <input type="submit" name="go" id="btnIniciar" value="Acceder" ></a>
+        </p>
+      </form>
+    
+
+    
+    
+</body>
+</html>
