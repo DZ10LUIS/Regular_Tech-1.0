@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login con Firebase</title>
+    <link rel="stylesheet" href="css/inicio.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="javascript/login.js" defer ></script>
+</head>
+<body>
+  <img style="width: 20%;" src="imagenes/ensigna__2_-removebg-preview.png" alt="">
+
+    <form>
+        <div class="inset">
+          <h2>Login</h2>
+        <p>
+          <label for="email">Correo Electronico</label>
+          <input type="text" name="email" id="email">
+        </p>
+        <p>
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" id="password">
+        </p>
+        </div>
+        <p class="p-container">
+          <a href="registrar.html"><span>¿Deseas registrarte?</span></a>
+          <input type="submit" name="go" id="btnIniciar" value="Acceder" >
+        </p>
+      </form>
+    
+
+    
+    
+</body>
+</html>

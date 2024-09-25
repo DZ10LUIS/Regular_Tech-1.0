@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login con Firebase</title>
+    <link rel="stylesheet" href="css/inicio.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="javascript/index.js" defer></script>
+</head>
+<body>
+  <img style="width: 20%;" src="imagenes/ensigna__2_-removebg-preview.png" alt="">
+
+    <form>
+        <div class="inset">
+          <h2>Registrar</h2>
+        <p>
+          <label for="email">Correo Electronico</label>
+          <input type="text" name="email" id="email">
+        </p>
+        <p>
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" id="password">
+        </p>
+        <p>
+          <label for="Escuela">Institución Academica</label>
+          <select id="institucion" name="escuela">
+            <option value="Cbtis No.96">Cbtis 96</option>
+            <option value="Cobaed 27">Cobaed 27</option>
+            <option value="Bachillerato No.109">Bachillerato No.109</option>
+            <option value="Cbtis No.6/5">Cbtis No.6/5</option>
+            <option value="Prepa Nocturna UJED">Prepa Nocturna UJED</option>
+            <option value="Preparatoria Tecnica y Ecologica">Preparatoria Tecnica y Ecologica</option>
+            <option value="Prepa Anahuac Durango">Prepa Anahuac Durango</option>
+            <option value="Promedac">Promedac</option>
+
+        </select>
+        </p>
+        <p>
+          <label for="semestre">Semestre</label>
+          <select id="semestre" name="escuela">
+            <option value="Primer Semestre">Primer Semestre</option>
+            <option value="Segundo Semestre">Segundo Semestre</option>
+            <option value="Tercer Semestre">Tercer Semestre</option>
+            <option value="Cuarto Semestre">Cuarto Semestre</option>
+            <option value="Quinto Semestre">Quinto Semestre</option>
+            <option value="Sexto Semestre">Sexto Semestre</option>
+            
+        </select>
+        
+      </p>
+        </div>
+        <p class="p-container">
+          <input type="submit" name="go" id="btnIniciar" value="Acceder" ></a>
+        </p>
+      </form>
+    
+
+    
+    
+</body>
+</html>
